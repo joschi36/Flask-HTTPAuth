@@ -25,7 +25,7 @@ class HTTPAuthTestCase(unittest.TestCase):
 
         @basic_verify_auth.error_handler
         def error_handler():
-            return 'error', 403  # use a custom error status
+            return 'error', 200  # use a custom error status
 
         @app.route('/')
         def index():
@@ -55,5 +55,5 @@ class HTTPAuthTestCase(unittest.TestCase):
         creds = base64.b64encode(b'john:bye').decode('utf-8')
         response = self.client.get(
             '/basic-verify', headers={'Authorization': 'Basic ' + creds})
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
