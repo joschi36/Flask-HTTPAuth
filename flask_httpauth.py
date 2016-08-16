@@ -11,7 +11,7 @@ This module provides Basic and Digest HTTP authentication for Flask routes.
 from functools import wraps
 from hashlib import md5
 from random import Random, SystemRandom
-from flask import request, make_response, session
+from flask import request, make_response, session, jsonify
 from werkzeug.datastructures import Authorization
 
 
@@ -26,7 +26,7 @@ class HTTPAuth(object):
             return None
 
         def default_auth_error():
-            return "Unauthorized Access"
+            return jsonify({'status': {'success': 'false', 'message': 'not authorized'}})
 
         self.get_password(default_get_password)
         self.error_handler(default_auth_error)
@@ -40,9 +40,7 @@ class HTTPAuth(object):
         def decorated(*args, **kwargs):
             res = f(*args, **kwargs)
             res = make_response(res)
-            if res.status_code == 200:
-                # if user didn't set status code, use 401
-                res.status_code = 401
+            res.status_code = 200
             if 'WWW-Authenticate' not in res.headers.keys():
                 res.headers['WWW-Authenticate'] = self.authenticate_header()
             return res
