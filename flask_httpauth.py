@@ -26,7 +26,9 @@ class HTTPAuth(object):
             return None
 
         def default_auth_error():
-            return jsonify({'status': {'success': 'false', 'message': 'not authorized'}})
+            return jsonify({'status': 
+                {'success': 'false', 'message': 'not authorized'}
+            })
 
         self.get_password(default_get_password)
         self.error_handler(default_auth_error)
