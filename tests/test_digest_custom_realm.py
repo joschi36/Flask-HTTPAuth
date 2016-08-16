@@ -34,7 +34,7 @@ class HTTPAuthTestCase(unittest.TestCase):
 
     def test_digest_auth_prompt_with_custom_realm(self):
         response = self.client.get('/digest-with-realm')
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertTrue(re.match(r'^Digest realm="My Realm",'
                                  'nonce="[0-9a-f]+",opaque="[0-9a-f]+"$',
@@ -49,7 +49,7 @@ class HTTPAuthTestCase(unittest.TestCase):
                                  'uri="/digest-with-realm",'
                                  'response="ca306c361a9055b968810067a37fb8cb",'
                                  'opaque="5ccc069c403ebaf9f0171e9517f40e41"'})
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertTrue(re.match(r'^Digest realm="My Realm",'
                                  r'nonce="[0-9a-f]+",opaque="[0-9a-f]+"$',

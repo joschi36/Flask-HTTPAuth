@@ -16,7 +16,7 @@ class HTTPAuthTestCase(unittest.TestCase):
 
         @token_auth.error_handler
         def error_handler():
-            return 'error', 401, {'WWW-Authenticate': 'MyToken realm="Foo"'}
+            return 'error', 200, {'WWW-Authenticate': 'MyToken realm="Foo"'}
 
         @app.route('/')
         def index():
@@ -33,7 +33,7 @@ class HTTPAuthTestCase(unittest.TestCase):
 
     def test_token_auth_prompt(self):
         response = self.client.get('/protected')
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertEqual(response.headers['WWW-Authenticate'],
                          'MyToken realm="Foo"')
@@ -59,7 +59,7 @@ class HTTPAuthTestCase(unittest.TestCase):
         response = self.client.get(
             '/protected', headers={'Authorization':
                                    'MyToken this-is-not-the-token!'})
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertEqual(response.headers['WWW-Authenticate'],
                          'MyToken realm="Foo"')
@@ -67,7 +67,7 @@ class HTTPAuthTestCase(unittest.TestCase):
     def test_token_auth_login_invalid_scheme(self):
         response = self.client.get(
             '/protected', headers={'Authorization': 'Foo this-is-the-token!'})
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertEqual(response.headers['WWW-Authenticate'],
                          'MyToken realm="Foo"')
@@ -75,7 +75,7 @@ class HTTPAuthTestCase(unittest.TestCase):
     def test_token_auth_login_invalid_header(self):
         response = self.client.get(
             '/protected', headers={'Authorization': 'this-is-a-bad-header'})
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertEqual(response.headers['WWW-Authenticate'],
                          'MyToken realm="Foo"')
@@ -91,7 +91,7 @@ class HTTPAuthTestCase(unittest.TestCase):
         response = self.client.get(
             '/protected2', headers={'Authorization':
                                     'Token this-is-the-token!'})
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('WWW-Authenticate' in response.headers)
         self.assertEqual(response.headers['WWW-Authenticate'],
                          'Token realm="foo"')

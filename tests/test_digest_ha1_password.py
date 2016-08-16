@@ -46,7 +46,7 @@ class HTTPAuthTestCase(unittest.TestCase):
 
     def test_digest_ha1_pw_auth_login_valid(self):
         response = self.client.get('/digest_ha1_pw')
-        self.assertTrue(response.status_code == 401)
+        self.assertTrue(response.status_code == 200)
         header = response.headers.get('WWW-Authenticate')
         auth_type, auth_info = header.split(None, 1)
         d = parse_dict_header(auth_info)
