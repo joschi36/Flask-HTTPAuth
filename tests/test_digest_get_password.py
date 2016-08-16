@@ -2,7 +2,7 @@ import unittest
 import re
 from hashlib import md5 as basic_md5
 from flask import Flask
-from flask_httpauth import HTTPDigestAuth
+from jflask_httpauth import HTTPDigestAuth
 from werkzeug.http import parse_dict_header
 
 

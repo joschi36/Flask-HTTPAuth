@@ -8,7 +8,7 @@ The root URL for this application can be accessed via basic auth, providing
 username and password, or via token auth, providing a bearer JWT token.
 """
 from flask import Flask, g
-from flask_httpauth import HTTPBasicAuth, HTTPTokenAuth, MultiAuth
+from jflask_httpauth import HTTPBasicAuth, HTTPTokenAuth, MultiAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as JWT
 

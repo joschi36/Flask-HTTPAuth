@@ -16,7 +16,7 @@ setup(
     author_email='miguelgrinberg50@gmail.com',
     description='Basic and Digest HTTP authentication for Flask routes',
     long_description=__doc__,
-    py_modules=['jflask_httpauth'],
+    py_modules=['jjflask_httpauth'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',

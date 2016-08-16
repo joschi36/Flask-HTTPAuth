@@ -1,7 +1,7 @@
 import base64
 import unittest
 from flask import Flask
-from flask_httpauth import HTTPBasicAuth, HTTPTokenAuth, MultiAuth
+from jflask_httpauth import HTTPBasicAuth, HTTPTokenAuth, MultiAuth
 
 
 class HTTPAuthTestCase(unittest.TestCase):

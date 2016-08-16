@@ -1,7 +1,7 @@
 import unittest
 import re
 from flask import Flask
-from flask_httpauth import HTTPDigestAuth
+from jflask_httpauth import HTTPDigestAuth
 
 
 class HTTPAuthTestCase(unittest.TestCase):

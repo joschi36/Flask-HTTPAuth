@@ -13,7 +13,7 @@ one of the tokens:
 The response should include the username, which is obtained from the JWT token.
 """
 from flask import Flask, g
-from flask_httpauth import HTTPTokenAuth
+from jflask_httpauth import HTTPTokenAuth
 from itsdangerous import TimedJSONWebSignatureSerializer as JWT
 
 

@@ -1,6 +1,6 @@
 import unittest
 from flask import Flask
-from flask_httpauth import HTTPTokenAuth
+from jflask_httpauth import HTTPTokenAuth
 
 
 class HTTPAuthTestCase(unittest.TestCase):

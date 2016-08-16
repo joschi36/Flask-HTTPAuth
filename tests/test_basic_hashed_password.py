@@ -2,7 +2,7 @@ import unittest
 import base64
 from hashlib import md5 as basic_md5
 from flask import Flask
-from flask_httpauth import HTTPBasicAuth
+from jflask_httpauth import HTTPBasicAuth
 
 
 def md5(s):

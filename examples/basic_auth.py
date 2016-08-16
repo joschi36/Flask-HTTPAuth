@@ -9,7 +9,7 @@ gain access, you can use (username=john, password=hello) or
 (username=susan, password=bye).
 """
 from flask import Flask
-from flask_httpauth import HTTPBasicAuth
+from jflask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
