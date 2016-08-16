@@ -9,14 +9,14 @@ from setuptools import setup
 
 setup(
     name='JFlask-HTTPAuth',
-    version='3.1.2',
+    version='4.0.1',
     url='http://github.com/joschi36/flask-httpauth/',
     license='MIT',
     author='Miguel Grinberg',
     author_email='miguelgrinberg50@gmail.com',
     description='Basic and Digest HTTP authentication for Flask routes',
     long_description=__doc__,
-    py_modules=['jjflask_httpauth'],
+    py_modules=['jflask_httpauth'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
